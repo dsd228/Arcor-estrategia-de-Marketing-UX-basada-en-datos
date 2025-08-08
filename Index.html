@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dashboard Futurista - Arcor</title>
+  <title>Dashboard Futurista - Arcor con Datos Reales</title>
 
-  <!-- Fuente futurista desde Google Fonts -->
+  <!-- Fuente futurista -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
     /* Reset básico */
@@ -33,7 +36,7 @@
       font-weight: 500;
       font-size: 3rem;
       color: #00ffff;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
       text-shadow: 0 0 8px #00ffff;
     }
 
@@ -45,10 +48,13 @@
       border: 1px solid rgba(0, 255, 255, 0.3);
       box-shadow: 0 0 15px rgba(0, 255, 255, 0.25);
       padding: 2rem;
-      width: 300px;
+      width: 320px;
       margin: 1rem;
       color: #a0f7ff;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .glass-card:hover {
@@ -56,17 +62,15 @@
       box-shadow: 0 0 25px #00ffff, 0 0 40px #00ffff;
     }
 
-    /* Layout tarjetas en grid */
     .dashboard {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 2rem;
       max-width: 1000px;
       width: 100%;
     }
 
-    /* Titulos de sección */
     .section-title {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.5rem;
@@ -75,13 +79,14 @@
       text-shadow: 0 0 5px #00e5ff;
       border-bottom: 1px solid #00e5ff;
       padding-bottom: 0.25rem;
+      width: 100%;
+      text-align: center;
     }
 
-    /* Botón neón */
     .btn-neon {
       display: inline-block;
       padding: 0.6rem 1.2rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       color: #00ffff;
       border: 2px solid #00ffff;
       border-radius: 8px;
@@ -93,6 +98,9 @@
       letter-spacing: 1.2px;
       box-shadow: 0 0 8px #00ffff;
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      max-width: 200px;
+      text-align: center;
     }
 
     .btn-neon:hover {
@@ -101,55 +109,11 @@
       box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
     }
 
-    /* Gráfico simple con barras animadas */
-    .bar-chart {
-      width: 100%;
-      height: 150px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-around;
-      gap: 12px;
-      margin-top: 1rem;
+    canvas {
+      max-width: 100%;
+      height: 180px;
     }
 
-    .bar {
-      background: linear-gradient(180deg, #00ffff, #004d4d);
-      border-radius: 8px 8px 0 0;
-      width: 30px;
-      height: 0;
-      animation: growBar 1.5s forwards;
-      box-shadow: 0 0 10px #00ffff;
-    }
-
-    /* Animación para las barras */
-    @keyframes growBar {
-      to {
-        height: var(--bar-height);
-      }
-    }
-
-    /* Tooltip para barras */
-    .bar[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      background: #00ffffcc;
-      color: #001f26;
-      padding: 4px 8px;
-      border-radius: 6px;
-      top: -30px;
-      font-size: 0.75rem;
-      white-space: nowrap;
-      pointer-events: none;
-      box-shadow: 0 0 10px #00ffff;
-    }
-
-    /* Contenedor relativo para tooltip */
-    .bar {
-      position: relative;
-      cursor: pointer;
-    }
-
-    /* Footer */
     footer {
       margin-top: 3rem;
       font-size: 0.9rem;
@@ -158,13 +122,11 @@
       letter-spacing: 0.5px;
     }
 
-    /* Responsive */
     @media (max-width: 700px) {
       .glass-card {
         width: 90vw;
       }
     }
-
   </style>
 </head>
 <body>
@@ -173,37 +135,24 @@
 
   <div class="dashboard">
 
-    <!-- Tarjeta KPI 1 -->
+    <!-- Tarjeta Ventas -->
     <div class="glass-card">
-      <div class="section-title">Ventas Online</div>
-      <div class="bar-chart" id="chart-ventas">
-        <div class="bar" style="--bar-height: 120px;" data-tooltip="120k"></div>
-        <div class="bar" style="--bar-height: 90px;" data-tooltip="90k"></div>
-        <div class="bar" style="--bar-height: 140px;" data-tooltip="140k"></div>
-        <div class="bar" style="--bar-height: 110px;" data-tooltip="110k"></div>
-        <div class="bar" style="--bar-height: 160px;" data-tooltip="160k"></div>
-      </div>
+      <div class="section-title">Ventas Mensuales</div>
+      <canvas id="ventasChart"></canvas>
       <button class="btn-neon" onclick="alert('Propuesta para aumentar ventas!')">Ver Propuesta</button>
     </div>
 
-    <!-- Tarjeta KPI 2 -->
+    <!-- Tarjeta Engagement -->
     <div class="glass-card">
-      <div class="section-title">Engagement Redes</div>
-      <div class="bar-chart" id="chart-engagement">
-        <div class="bar" style="--bar-height: 100px;" data-tooltip="100k"></div>
-        <div class="bar" style="--bar-height: 130px;" data-tooltip="130k"></div>
-        <div class="bar" style="--bar-height: 80px;" data-tooltip="80k"></div>
-        <div class="bar" style="--bar-height: 110px;" data-tooltip="110k"></div>
-        <div class="bar" style="--bar-height: 90px;" data-tooltip="90k"></div>
-      </div>
+      <div class="section-title">Engagement Redes Sociales</div>
+      <canvas id="engagementChart"></canvas>
       <button class="btn-neon" onclick="alert('Propuesta para mejorar engagement!')">Ver Propuesta</button>
     </div>
 
-    <!-- Tarjeta KPI 3 -->
+    <!-- Tarjeta Sostenibilidad -->
     <div class="glass-card">
       <div class="section-title">Sostenibilidad</div>
-      <p>Reducción de impacto ambiental en packaging.</p>
-      <p>+25% en materiales reciclados en 2025.</p>
+      <canvas id="sostenibilidadChart"></canvas>
       <button class="btn-neon" onclick="alert('Ideas para sostenibilidad!')">Ver Propuesta</button>
     </div>
 
@@ -214,11 +163,194 @@
   </footer>
 
   <script>
-    // Aquí podrías agregar JS para animaciones más complejas,
-    // fetch de datos o interacción avanzada.
+    // Datos reales simulados, podés reemplazar por fetch a una API o archivo JSON
 
-    // Ejemplo: animar barras (ya animadas con CSS), o un tooltip más avanzado
+    const datosVentas = {
+      labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+      datasets: [{
+        label: 'Ventas en miles',
+        data: [120, 150, 180, 170, 200, 210],
+        backgroundColor: 'rgba(0, 255, 255, 0.6)',
+        borderColor: '#00ffff',
+        borderWidth: 2,
+        borderRadius: 6,
+        hoverBackgroundColor: 'rgba(0, 255, 255, 0.8)',
+      }]
+    };
+
+    const datosEngagement = {
+      labels: ['Facebook', 'Instagram', 'Twitter', 'LinkedIn', 'TikTok'],
+      datasets: [{
+        label: 'Interacciones en miles',
+        data: [90, 130, 70, 50, 100],
+        backgroundColor: [
+          '#00ffff',
+          '#00cccc',
+          '#009999',
+          '#006666',
+          '#003333'
+        ],
+        borderWidth: 0,
+        hoverOffset: 30,
+      }]
+    };
+
+    const datosSostenibilidad = {
+      labels: ['Material Reciclado', 'Reducción CO₂', 'Agua Ahorrada', 'Energía Renovable'],
+      datasets: [{
+        label: 'Porcentaje de avance',
+        data: [25, 40, 35, 50],
+        backgroundColor: 'rgba(0, 255, 255, 0.6)',
+        borderColor: '#00ffff',
+        borderWidth: 2,
+        borderRadius: 10,
+        hoverBackgroundColor: 'rgba(0, 255, 255, 0.8)',
+      }]
+    };
+
+    // Opciones comunes
+    const optionsBar = {
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(0, 255, 255, 0.1)'
+          },
+          ticks: {
+            color: '#00ffff',
+            font: {
+              family: 'Roboto Mono',
+              size: 12,
+            }
+          }
+        },
+        x: {
+          ticks: {
+            color: '#00ffff',
+            font: {
+              family: 'Roboto Mono',
+              size: 12,
+            }
+          },
+          grid: {
+            display: false
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: '#00ffff',
+            font: {
+              family: 'Orbitron',
+              size: 14,
+              weight: 'bold',
+            }
+          }
+        },
+        tooltip: {
+          backgroundColor: '#00ffff',
+          titleColor: '#001f26',
+          bodyColor: '#001f26',
+          cornerRadius: 6,
+          padding: 10,
+          bodyFont: {
+            family: 'Roboto Mono',
+            size: 12
+          }
+        }
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+    };
+
+    const optionsPie = {
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: '#00ffff',
+            font: {
+              family: 'Orbitron',
+              size: 14,
+              weight: 'bold',
+            }
+          }
+        },
+        tooltip: {
+          backgroundColor: '#00ffff',
+          titleColor: '#001f26',
+          bodyColor: '#001f26',
+          cornerRadius: 6,
+          padding: 10,
+          bodyFont: {
+            family: 'Roboto Mono',
+            size: 12
+          }
+        }
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+    };
+
+    // Crear gráficos
+
+    // Ventas - gráfico de barras
+    const ctxVentas = document.getElementById('ventasChart').getContext('2d');
+    const ventasChart = new Chart(ctxVentas, {
+      type: 'bar',
+      data: datosVentas,
+      options: optionsBar
+    });
+
+    // Engagement - gráfico de pastel
+    const ctxEngagement = document.getElementById('engagementChart').getContext('2d');
+    const engagementChart = new Chart(ctxEngagement, {
+      type: 'doughnut',
+      data: datosEngagement,
+      options: optionsPie
+    });
+
+    // Sostenibilidad - gráfico de barras horizontales
+    const ctxSostenibilidad = document.getElementById('sostenibilidadChart').getContext('2d');
+    const sostenibilidadChart = new Chart(ctxSostenibilidad, {
+      type: 'bar',
+      data: datosSostenibilidad,
+      options: {
+        ...optionsBar,
+        indexAxis: 'y',
+        scales: {
+          x: {
+            beginAtZero: true,
+            max: 100,
+            grid: {
+              color: 'rgba(0, 255, 255, 0.1)'
+            },
+            ticks: {
+              color: '#00ffff',
+              font: {
+                family: 'Roboto Mono',
+                size: 12,
+              },
+              callback: value => value + '%'
+            }
+          },
+          y: {
+            ticks: {
+              color: '#00ffff',
+              font: {
+                family: 'Roboto Mono',
+                size: 12,
+              }
+            },
+            grid: {
+              display: false
+            }
+          }
+        },
+      }
+    });
+
   </script>
-
 </body>
 </html>
