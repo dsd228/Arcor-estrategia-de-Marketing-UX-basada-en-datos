@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dashboard Futurista - Arcor con Datos Reales</title>
+  <title>Dashboard Futurista - Arcor</title>
 
   <!-- Fuente futurista -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&display=swap" rel="stylesheet" />
@@ -12,11 +12,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
-    /* Reset básico */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      margin: 0; padding: 0; box-sizing: border-box;
     }
 
     body {
@@ -24,20 +21,68 @@
       font-family: 'Roboto Mono', monospace;
       color: #e0f7fa;
       min-height: 100vh;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem;
-      overflow-x: hidden;
     }
 
-    h1 {
+    header {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    header img {
+      height: 50px;
+      filter: drop-shadow(0 0 4px #00ffff);
+    }
+
+    header h1 {
       font-family: 'Orbitron', sans-serif;
       font-weight: 500;
-      font-size: 3rem;
+      font-size: 2.8rem;
       color: #00ffff;
-      margin-bottom: 2rem;
       text-shadow: 0 0 8px #00ffff;
+      flex-grow: 1;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav button {
+      background: transparent;
+      border: 2px solid #00ffff;
+      color: #00ffff;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 0 8px #00ffff;
+    }
+
+    nav button:hover {
+      background-color: #00ffff;
+      color: #001f26;
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+    }
+
+    .dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1200px;
+      width: 100%;
     }
 
     .glass-card {
@@ -48,13 +93,12 @@
       border: 1px solid rgba(0, 255, 255, 0.3);
       box-shadow: 0 0 15px rgba(0, 255, 255, 0.25);
       padding: 2rem;
-      width: 320px;
-      margin: 1rem;
+      width: 360px;
       color: #a0f7ff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .glass-card:hover {
@@ -62,18 +106,9 @@
       box-shadow: 0 0 25px #00ffff, 0 0 40px #00ffff;
     }
 
-    .dashboard {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      max-width: 1000px;
-      width: 100%;
-    }
-
     .section-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       margin-bottom: 1rem;
       color: #00e5ff;
       text-shadow: 0 0 5px #00e5ff;
@@ -83,35 +118,9 @@
       text-align: center;
     }
 
-    .btn-neon {
-      display: inline-block;
-      padding: 0.6rem 1.2rem;
-      margin-top: 1.5rem;
-      color: #00ffff;
-      border: 2px solid #00ffff;
-      border-radius: 8px;
-      background: transparent;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 600;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      box-shadow: 0 0 8px #00ffff;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      width: 100%;
-      max-width: 200px;
-      text-align: center;
-    }
-
-    .btn-neon:hover {
-      background-color: #00ffff;
-      color: #001f26;
-      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
-    }
-
     canvas {
       max-width: 100%;
-      height: 180px;
+      height: 200px;
     }
 
     footer {
@@ -120,50 +129,82 @@
       color: #007f91;
       font-family: 'Roboto Mono', monospace;
       letter-spacing: 0.5px;
+      text-align: center;
+      width: 100%;
     }
 
-    @media (max-width: 700px) {
+    /* Responsive */
+    @media (max-width: 800px) {
+      .dashboard {
+        flex-direction: column;
+        align-items: center;
+      }
       .glass-card {
         width: 90vw;
+      }
+      header {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      nav {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
 
-  <h1>Arcor Dashboard Futurista</h1>
+  <header>
+    <!-- Logo Arcor (puedes cambiar src por tu imagen) -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Arcor_logo.svg/2560px-Arcor_logo.svg.png" alt="Logo Arcor" />
+    <h1>Dashboard Futurista - Arcor</h1>
+    <nav>
+      <button onclick="showSection('ventas')">Ventas</button>
+      <button onclick="showSection('engagement')">Engagement</button>
+      <button onclick="showSection('sostenibilidad')">Sostenibilidad</button>
+    </nav>
+  </header>
 
-  <div class="dashboard">
-
-    <!-- Tarjeta Ventas -->
-    <div class="glass-card">
+  <main class="dashboard">
+    <!-- Sección Ventas -->
+    <section id="ventas" class="glass-card">
       <div class="section-title">Ventas Mensuales</div>
       <canvas id="ventasChart"></canvas>
       <button class="btn-neon" onclick="alert('Propuesta para aumentar ventas!')">Ver Propuesta</button>
-    </div>
+    </section>
 
-    <!-- Tarjeta Engagement -->
-    <div class="glass-card">
+    <!-- Sección Engagement -->
+    <section id="engagement" class="glass-card" style="display:none;">
       <div class="section-title">Engagement Redes Sociales</div>
       <canvas id="engagementChart"></canvas>
       <button class="btn-neon" onclick="alert('Propuesta para mejorar engagement!')">Ver Propuesta</button>
-    </div>
+    </section>
 
-    <!-- Tarjeta Sostenibilidad -->
-    <div class="glass-card">
+    <!-- Sección Sostenibilidad -->
+    <section id="sostenibilidad" class="glass-card" style="display:none;">
       <div class="section-title">Sostenibilidad</div>
       <canvas id="sostenibilidadChart"></canvas>
       <button class="btn-neon" onclick="alert('Ideas para sostenibilidad!')">Ver Propuesta</button>
-    </div>
-
-  </div>
+    </section>
+  </main>
 
   <footer>
     © 2025 Arcor - Estrategia de Marketing UX basada en datos
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-    // Datos simulados para ejemplo
+    // Función para mostrar la sección seleccionada y ocultar las otras
+    function showSection(sectionId) {
+      const sections = ['ventas', 'engagement', 'sostenibilidad'];
+      sections.forEach(id => {
+        document.getElementById(id).style.display = id === sectionId ? 'flex' : 'none';
+      });
+    }
+
+    // Datos para gráficos
     const datosVentas = {
       labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
       datasets: [{
@@ -207,7 +248,6 @@
       }]
     };
 
-    // Opciones comunes para barras
     const optionsBar = {
       scales: {
         y: {
@@ -217,34 +257,22 @@
           },
           ticks: {
             color: '#00ffff',
-            font: {
-              family: 'Roboto Mono',
-              size: 12,
-            }
+            font: { family: 'Roboto Mono', size: 12 }
           }
         },
         x: {
           ticks: {
             color: '#00ffff',
-            font: {
-              family: 'Roboto Mono',
-              size: 12,
-            }
+            font: { family: 'Roboto Mono', size: 12 }
           },
-          grid: {
-            display: false
-          }
+          grid: { display: false }
         }
       },
       plugins: {
         legend: {
           labels: {
             color: '#00ffff',
-            font: {
-              family: 'Orbitron',
-              size: 14,
-              weight: 'bold',
-            }
+            font: { family: 'Orbitron', size: 14, weight: 'bold' }
           }
         },
         tooltip: {
@@ -253,10 +281,7 @@
           bodyColor: '#001f26',
           cornerRadius: 6,
           padding: 10,
-          bodyFont: {
-            family: 'Roboto Mono',
-            size: 12
-          }
+          bodyFont: { family: 'Roboto Mono', size: 12 }
         }
       },
       responsive: true,
@@ -269,11 +294,7 @@
           position: 'bottom',
           labels: {
             color: '#00ffff',
-            font: {
-              family: 'Orbitron',
-              size: 14,
-              weight: 'bold',
-            }
+            font: { family: 'Orbitron', size: 14, weight: 'bold' }
           }
         },
         tooltip: {
@@ -282,73 +303,54 @@
           bodyColor: '#001f26',
           cornerRadius: 6,
           padding: 10,
-          bodyFont: {
-            family: 'Roboto Mono',
-            size: 12
-          }
+          bodyFont: { family: 'Roboto Mono', size: 12 }
         }
       },
       responsive: true,
       maintainAspectRatio: false,
     };
 
-    // Crear gráficos
+    // Inicializar gráficos
+    const ventasChart = new Chart(
+      document.getElementById('ventasChart').getContext('2d'),
+      { type: 'bar', data: datosVentas, options: optionsBar }
+    );
 
-    // Ventas - barras verticales
-    const ctxVentas = document.getElementById('ventasChart').getContext('2d');
-    const ventasChart = new Chart(ctxVentas, {
-      type: 'bar',
-      data: datosVentas,
-      options: optionsBar
-    });
+    const engagementChart = new Chart(
+      document.getElementById('engagementChart').getContext('2d'),
+      { type: 'doughnut', data: datosEngagement, options: optionsPie }
+    );
 
-    // Engagement - pastel
-    const ctxEngagement = document.getElementById('engagementChart').getContext('2d');
-    const engagementChart = new Chart(ctxEngagement, {
-      type: 'doughnut',
-      data: datosEngagement,
-      options: optionsPie
-    });
-
-    // Sostenibilidad - barras horizontales
-    const ctxSostenibilidad = document.getElementById('sostenibilidadChart').getContext('2d');
-    const sostenibilidadChart = new Chart(ctxSostenibilidad, {
-      type: 'bar',
-      data: datosSostenibilidad,
-      options: {
-        ...optionsBar,
-        indexAxis: 'y',
-        scales: {
-          x: {
-            beginAtZero: true,
-            max: 100,
-            grid: {
-              color: 'rgba(0, 255, 255, 0.1)'
-            },
-            ticks: {
-              color: '#00ffff',
-              font: {
-                family: 'Roboto Mono',
-                size: 12,
-              },
-              callback: value => value + '%'
-            }
-          },
-          y: {
-            ticks: {
-              color: '#00ffff',
-              font: {
-                family: 'Roboto Mono',
-                size: 12,
+    const sostenibilidadChart = new Chart(
+      document.getElementById('sostenibilidadChart').getContext('2d'),
+      {
+        type: 'bar',
+        data: datosSostenibilidad,
+        options: {
+          ...optionsBar,
+          indexAxis: 'y',
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 100,
+              grid: { color: 'rgba(0, 255, 255, 0.1)' },
+              ticks: {
+                color: '#00ffff',
+                font: { family: 'Roboto Mono', size: 12 },
+                callback: val => val + '%'
               }
             },
-            grid: {
-              display: false
+            y: {
+              ticks: {
+                color: '#00ffff',
+                font: { family: 'Roboto Mono', size: 12 }
+              },
+              grid: { display: false }
             }
           }
-        },
+        }
       }
-    });
+    );
   </script>
 
 </body>
