@@ -2,127 +2,120 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Arcor · Estrategia de Marketing y UX basada en Datos</title>
-  <meta name="description" content="Análisis estratégico y UX de Arcor con visualizaciones, benchmarking y propuestas sostenibles" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Arcor Futurista</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" />
 </head>
 <body>
   <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Logo_Arcor.svg" alt="Logo Arcor" class="logo" />
-    <h1>Arcor · Estrategia de Marketing y UX basada en Datos</h1>
-    <p class="author">Autor: David Sebastián Díaz</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Grupo_Arcor_logo.svg/512px-Grupo_Arcor_logo.svg.png" alt="Logo Arcor" class="logo" />
+    <h1>Estrategia de Marketing y UX basada en Datos</h1>
+    <p class="autor">Autor: David Sebastián Díaz</p>
   </header>
 
-  <nav>
-    <ul class="menu">
-      <li><a href="#introduccion">Introducción</a></li>
-      <li><a href="#objetivos">Objetivos</a></li>
-      <li><a href="#visualizaciones">Visualizaciones</a></li>
-      <li><a href="#hipotesis">Hipótesis & KPIs</a></li>
-      <li><a href="#sostenibilidad">Sostenibilidad</a></li>
-      <li><a href="#usabilidad">Usabilidad Digital</a></li>
-      <li><a href="#corporativo">Datos Corporativos</a></li>
-      <li><a href="#conclusiones">Conclusiones</a></li>
-    </ul>
-  </nav>
-
   <main>
-    <section id="introduccion">
-      <h2>Introducción / Introduction</h2>
-      <p>Este proyecto explora el caso de <strong>Arcor</strong>, una de las marcas más icónicas de Latinoamérica, desde una perspectiva estratégica y técnica, combinando análisis de datos, experiencia de usuario (UX) y marketing digital.</p>
-      <p>Incluye visualizaciones interactivas, benchmarking con Nestlé / Mondelez, análisis de consumo por país, propuestas ecológicas y auditoría UX del sitio web oficial.</p>
+    <section class="funnel">
+      <h2>Embudo de Conversión</h2>
+      <canvas id="funnelChart" aria-label="Gráfico de embudo" role="img"></canvas>
     </section>
 
-    <section id="objetivos">
-      <h2>Objetivos / Objectives</h2>
-      <ul>
-        <li>Analizar estrategias de marketing digital y tradicional.</li>
-        <li>Evaluar presencia online, segmentación y experiencia de usuario.</li>
-        <li>Proponer mejoras basadas en datos, diseño y KPIs.</li>
-        <li>Comparar desempeño con competidores globales.</li>
-        <li>Incorporar contexto de consumo y sostenibilidad.</li>
-      </ul>
+    <section class="radar">
+      <h2>Indicadores UX</h2>
+      <canvas id="radarChart" aria-label="Radar UX" role="img"></canvas>
     </section>
 
-    <section id="visualizaciones">
-      <h2>Visualizaciones / Visualizations</h2>
-      <div class="charts-container">
-        <canvas id="funnelChart" aria-label="Gráfico de embudo de conversión" role="img"></canvas>
-        <canvas id="radarChart" aria-label="Gráfico radar comparativo UX" role="img"></canvas>
-      </div>
-      <div id="heatmap" style="height: 400px; margin-top: 20px;"></div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Heatmap.png/640px-Heatmap.png" alt="Mapa de calor de consumo" />
-    </section>
-
-    <section id="hipotesis">
-      <h2>Hipótesis y KPIs / Hypotheses & KPIs</h2>
-      <ul>
-        <li>El canal digital tiene mayor ROI en segmentos jóvenes.</li>
-        <li>El sitio web presenta oportunidades de mejora UX.</li>
-        <li>Nestlé tiene mayor engagement social, pero Arcor lidera en SEO.</li>
-        <li>El packaging ecológico mejora percepción de marca.</li>
-      </ul>
-      <ul>
-        <li>Engagement Rate (%)</li>
-        <li>Bounce Rate y duración promedio</li>
-        <li>SEO Ranking y tiempo de carga</li>
-        <li>% de productos compostables</li>
-        <li>Variación de consumo por país</li>
-      </ul>
-    </section>
-
-    <section id="sostenibilidad">
-      <h2>Estrategias sostenibles / Sustainability Strategies</h2>
-      <ul>
-        <li>Packaging biodegradable (PLA, NatureFlex™, papel compostable)</li>
-        <li>Campañas verdes con QR educativo y gamificación</li>
-        <li>KPI: kg de plástico evitado, % de productos sostenibles</li>
-      </ul>
-    </section>
-
-    <section id="usabilidad">
-      <h2>Usabilidad digital / Digital Usability</h2>
-      <ul>
-        <li>Auditoría UX con heurísticas de Nielsen</li>
-        <li>Métricas Lighthouse: <strong>LCP ≈ 2.9s · TTI ≈ 3.2s · Accesibilidad: 78/100</strong></li>
-        <li>Propuesta de app de fidelización con escaneo de productos</li>
-        <li>Mejora de navegación: búsqueda predictiva, breadcrumbs</li>
-      </ul>
-    </section>
-
-    <section id="corporativo">
-      <h2>Datos corporativos / Corporate Data</h2>
-      <ul>
-        <li>Empleados: +21,000 en 40 plantas</li>
-        <li>Exportaciones: +120 países</li>
-        <li>Ingresos 2024: $3.9 mil millones</li>
-        <li>Inversión: $410M en packaging sostenible</li>
-        <li>Estrategia 2030: “Living Better” alineada con ODS ONU</li>
-      </ul>
-    </section>
-
-    <section id="conclusiones">
-      <h2>Conclusiones / Conclusions</h2>
-      <ul>
-        <li>Arcor tiene fuerte posicionamiento SEO, pero menor engagement social.</li>
-        <li>El sitio presenta oportunidades de mejora UX.</li>
-        <li>El canal digital muestra mayor ROI en segmentos jóvenes.</li>
-        <li>Nestlé destaca en fidelización y diseño UX.</li>
-        <li>El enfoque ecológico puede reposicionar la marca.</li>
-      </ul>
+    <section class="heatmap">
+      <h2>Presencia Regional</h2>
+      <div id="heatmap" style="height: 400px;"></div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 David Sebastián Díaz · Portfolio Técnico Interdisciplinario</p>
-  </footer>
+  <script>
+    // Embudo de conversión
+    const ctxFunnel = document.getElementById('funnelChart').getContext('2d');
+    new Chart(ctxFunnel, {
+      type: 'bar',
+      data: {
+        labels: ['Visitantes', 'Interacción', 'Leads', 'Ventas'],
+        datasets: [{
+          label: 'Conversiones',
+          data: [120000, 60000, 15000, 4000],
+          backgroundColor: ['#00eaff', '#00c4ff', '#0099ff', '#0077cc'],
+          borderRadius: 8
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        plugins: { legend: { display: false } },
+        scales: { x: { beginAtZero: true } }
+      }
+    });
 
-  <script src="scripts.js"></script>
+    // Radar UX
+    const ctxRadar = document.getElementById('radarChart').getContext('2d');
+    new Chart(ctxRadar, {
+      type: 'radar',
+      data: {
+        labels: ['Usabilidad', 'Velocidad', 'Accesibilidad', 'SEO', 'Engagement'],
+        datasets: [
+          {
+            label: 'Arcor',
+            data: [75, 82, 78, 88, 67],
+            backgroundColor: 'rgba(0, 234, 255, 0.3)',
+            borderColor: '#00eaff',
+            pointBackgroundColor: '#00eaff'
+          },
+          {
+            label: 'Nestlé',
+            data: [80, 75, 82, 78, 80],
+            backgroundColor: 'rgba(255, 230, 0, 0.3)',
+            borderColor: '#ffe600',
+            pointBackgroundColor: '#ffe600'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          r: {
+            beginAtZero: true,
+            max: 100,
+            ticks: { stepSize: 20 },
+            pointLabels: { color: '#eee' },
+            grid: { color: '#333' }
+          }
+        },
+        plugins: {
+          legend: { labels: { color: '#eee' } },
+          tooltip: { backgroundColor: '#1f1f1f', titleColor: '#00eaff', bodyColor: '#fff' }
+        }
+      }
+    });
+
+    // Mapa de calor con Leaflet
+    const map = L.map('heatmap').setView([-15, -60], 3);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const heatData = [
+      [-34.6, -58.4, 0.9], // Buenos Aires
+      [-23.5, -46.6, 0.8], // São Paulo
+      [-12.0, -77.0, 0.6], // Lima
+      [-33.4, -70.6, 0.7], // Santiago
+      [4.6, -74.0, 0.5]    // Bogotá
+    ];
+
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/leaflet.heat/dist/leaflet-heat.js';
+    script.onload = () => {
+      L.heatLayer(heatData, { radius: 25, blur: 20 }).addTo(map);
+    };
+    document.head.appendChild(script);
+  </script>
 </body>
 </html>
-
