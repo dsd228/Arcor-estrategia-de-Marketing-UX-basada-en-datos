@@ -6,16 +6,13 @@
   <title>Arcor · Estrategia de Marketing y UX basada en Datos</title>
   <meta name="description" content="Análisis estratégico y UX de Arcor con visualizaciones, benchmarking y propuestas sostenibles" />
   <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" />
 </head>
 <body>
   <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Logo_Arcor.svg" alt="Logo Arcor" class="logo" />
+    <div class="logo">A</div>
     <h1>Arcor · Estrategia de Marketing y UX basada en Datos</h1>
-    <p class="author">Autor: David Sebastián Díaz</p>
+    <p class="author">👤 Autor: David Sebastián Díaz</p>
+    <p class="author">🎯 Del algoritmo a la experiencia. From data to design, from insight to impact.</p>
   </header>
 
   <nav>
@@ -33,37 +30,85 @@
 
   <main>
     <section id="introduccion">
-      <h2>Introducción / Introduction</h2>
+      <h2>🧵 Introducción / Introduction</h2>
       <p>Este proyecto explora el caso de <strong>Arcor</strong>, una de las marcas más icónicas de Latinoamérica, desde una perspectiva estratégica y técnica, combinando análisis de datos, experiencia de usuario (UX) y marketing digital.</p>
       <p>This project explores the case of <strong>Arcor</strong>, one of Latin America's most iconic brands, from a strategic and technical perspective, combining data analysis, user experience (UX), and digital marketing.</p>
       <p>Incluye visualizaciones interactivas, benchmarking con Nestlé / Mondelez, análisis de consumo por país, propuestas ecológicas y auditoría UX del sitio web oficial.</p>
       <p>It includes interactive visualizations, benchmarking with Nestlé / Mondelez, country-level consumption analysis, ecological proposals, and UX audit of the official website.</p>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <button class="interactive-btn" onclick="scrollToSection('visualizaciones')">🚀 Ver Análisis Completo</button>
+        <button class="interactive-btn" onclick="downloadReport()">📄 Descargar Reporte</button>
+      </div>
     </section>
 
     <section id="objetivos">
-      <h2>Objetivos / Objectives</h2>
+      <h2>🎯 Objetivos / Objectives</h2>
       <ul>
-        <li>Analizar estrategias de marketing digital y tradicional.</li>
-        <li>Evaluate digital and traditional marketing strategies.</li>
-        <li>Evaluar presencia online, segmentación y experiencia de usuario.</li>
-        <li>Assess online presence, segmentation, and user experience.</li>
-        <li>Proponer mejoras basadas en datos, diseño y KPIs.</li>
-        <li>Propose improvements based on data, design, and KPIs.</li>
-        <li>Comparar desempeño con competidores globales.</li>
-        <li>Compare performance with global competitors.</li>
-        <li>Incorporar contexto de consumo y sostenibilidad.</li>
-        <li>Integrate consumption context and sustainability.</li>
+        <li>📊 Analizar estrategias de marketing digital y tradicional.</li>
+        <li>🔍 Evaluate digital and traditional marketing strategies.</li>
+        <li>👥 Evaluar presencia online, segmentación y experiencia de usuario.</li>
+        <li>📈 Assess online presence, segmentation, and user experience.</li>
+        <li>💡 Proponer mejoras basadas en datos, diseño y KPIs.</li>
+        <li>🚀 Propose improvements based on data, design, and KPIs.</li>
+        <li>⚖️ Comparar desempeño con competidores globales.</li>
+        <li>🌐 Compare performance with global competitors.</li>
+        <li>🌱 Incorporar contexto de consumo y sostenibilidad.</li>
+        <li>♻️ Integrate consumption context and sustainability.</li>
       </ul>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <button class="interactive-btn" onclick="showMethodology()">📋 Ver Metodología</button>
+        <button class="interactive-btn" onclick="showTimeline()">⏱️ Timeline del Proyecto</button>
+      </div>
     </section>
 
     <section id="visualizaciones">
-      <h2>Visualizaciones / Visualizations</h2>
+      <h2>📊 Visualizaciones / Visualizations</h2>
+      <p>Datos reales de Arcor presentados de forma interactiva y futurista</p>
+      
       <div class="charts-container">
-        <canvas id="funnelChart"></canvas>
-        <canvas id="radarChart"></canvas>
+        <!-- Sales Performance Chart -->
+        <div class="chart-wrapper">
+          <h3 style="color: var(--neon-cyan); text-align: center; margin-bottom: 1rem;">📈 Ventas Mensuales 2024</h3>
+          <canvas id="salesChart" width="400" height="200"></canvas>
+          <button class="interactive-btn" onclick="updateSalesData()">🔄 Actualizar Datos</button>
+        </div>
+        
+        <!-- Engagement Radar Chart -->
+        <div class="chart-wrapper">
+          <h3 style="color: var(--neon-cyan); text-align: center; margin-bottom: 1rem;">🎯 Engagement vs Competidores</h3>
+          <canvas id="engagementChart" width="400" height="200"></canvas>
+          <button class="interactive-btn" onclick="toggleComparison()">📊 Comparar con Nestlé</button>
+        </div>
+        
+        <!-- Sustainability Metrics -->
+        <div class="chart-wrapper">
+          <h3 style="color: var(--neon-cyan); text-align: center; margin-bottom: 1rem;">🌱 Métricas de Sostenibilidad</h3>
+          <canvas id="sustainabilityChart" width="400" height="200"></canvas>
+          <button class="interactive-btn" onclick="showSustainabilityGoals()">🎯 Ver Objetivos 2030</button>
+        </div>
       </div>
-      <div id="heatmap" style="height: 400px; margin-top: 20px;"></div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Heatmap.png/640px-Heatmap.png" alt="Mapa de calor de consumo" />
+      
+      <!-- Real-time KPI Dashboard -->
+      <div class="charts-container">
+        <div class="data-card">
+          <div class="metric-value" id="revenueMetric">$3.9B</div>
+          <div class="metric-label">Ingresos 2024</div>
+        </div>
+        <div class="data-card">
+          <div class="metric-value" id="employeesMetric">21,000+</div>
+          <div class="metric-label">Empleados</div>
+        </div>
+        <div class="data-card">
+          <div class="metric-value" id="countriesMetric">120+</div>
+          <div class="metric-label">Países</div>
+        </div>
+        <div class="data-card">
+          <div class="metric-value" id="sustainabilityMetric">$410M</div>
+          <div class="metric-label">Inversión Sostenible</div>
+        </div>
+      </div>
     </section>
 
     <section id="hipotesis">
@@ -86,12 +131,18 @@
     </section>
 
     <section id="sostenibilidad">
-      <h2>Estratégias sostenibles / Sustainability Strategies</h2>
+      <h2>🌱 Estratégias sostenibles / Sustainability Strategies</h2>
       <ul>
-        <li>Packaging biodegradable (PLA, NatureFlex™, papel compostable)</li>
-        <li>Campañas verdes con QR educativo y gamificación</li>
-        <li>KPI: kg de plástico evitado, % de productos sostenibles</li>
+        <li>♻️ Packaging biodegradable (PLA, NatureFlex™, papel compostable)</li>
+        <li>📱 Campañas verdes con QR educativo y gamificación</li>
+        <li>📊 KPI: kg de plástico evitado, % de productos sostenibles</li>
       </ul>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <button class="interactive-btn" onclick="showEcoImpact()">🌍 Impacto Ambiental</button>
+        <button class="interactive-btn" onclick="showGreenInitiatives()">🌿 Iniciativas Verdes</button>
+        <button class="interactive-btn" onclick="calculateCarbonFootprint()">🔢 Calculadora CO₂</button>
+      </div>
     </section>
 
     <section id="usabilidad">
