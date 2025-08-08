@@ -2,122 +2,223 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard Arcor Futurista</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="js/scripts.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard Futurista - Arcor</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" />
+  <!-- Fuente futurista desde Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Roboto Mono', monospace;
+      color: #e0f7fa;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
+      font-size: 3rem;
+      color: #00ffff;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 8px #00ffff;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 15px;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.25);
+      padding: 2rem;
+      width: 300px;
+      margin: 1rem;
+      color: #a0f7ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glass-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00ffff, 0 0 40px #00ffff;
+    }
+
+    /* Layout tarjetas en grid */
+    .dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    /* Titulos de sección */
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #00e5ff;
+      text-shadow: 0 0 5px #00e5ff;
+      border-bottom: 1px solid #00e5ff;
+      padding-bottom: 0.25rem;
+    }
+
+    /* Botón neón */
+    .btn-neon {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      margin-top: 1rem;
+      color: #00ffff;
+      border: 2px solid #00ffff;
+      border-radius: 8px;
+      background: transparent;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      box-shadow: 0 0 8px #00ffff;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-neon:hover {
+      background-color: #00ffff;
+      color: #001f26;
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+    }
+
+    /* Gráfico simple con barras animadas */
+    .bar-chart {
+      width: 100%;
+      height: 150px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      gap: 12px;
+      margin-top: 1rem;
+    }
+
+    .bar {
+      background: linear-gradient(180deg, #00ffff, #004d4d);
+      border-radius: 8px 8px 0 0;
+      width: 30px;
+      height: 0;
+      animation: growBar 1.5s forwards;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    /* Animación para las barras */
+    @keyframes growBar {
+      to {
+        height: var(--bar-height);
+      }
+    }
+
+    /* Tooltip para barras */
+    .bar[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      background: #00ffffcc;
+      color: #001f26;
+      padding: 4px 8px;
+      border-radius: 6px;
+      top: -30px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      pointer-events: none;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    /* Contenedor relativo para tooltip */
+    .bar {
+      position: relative;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #007f91;
+      font-family: 'Roboto Mono', monospace;
+      letter-spacing: 0.5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .glass-card {
+        width: 90vw;
+      }
+    }
+
+  </style>
 </head>
 <body>
-  <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Grupo_Arcor_logo.svg/512px-Grupo_Arcor_logo.svg.png" alt="Logo Arcor" class="logo" />
-    <h1>Estrategia de Marketing y UX basada en Datos</h1>
-    <p class="autor">Autor: David Sebastián Díaz</p>
-  </header>
 
-  <main>
-    <section class="funnel">
-      <h2>Embudo de Conversión</h2>
-      <canvas id="funnelChart" aria-label="Gráfico de embudo" role="img"></canvas>
-    </section>
+  <h1>Arcor Dashboard Futurista</h1>
 
-    <section class="radar">
-      <h2>Indicadores UX</h2>
-      <canvas id="radarChart" aria-label="Radar UX" role="img"></canvas>
-    </section>
+  <div class="dashboard">
 
-    <section class="heatmap">
-      <h2>Presencia Regional</h2>
-      <div id="heatmap" style="height: 400px;"></div>
-    </section>
-  </main>
+    <!-- Tarjeta KPI 1 -->
+    <div class="glass-card">
+      <div class="section-title">Ventas Online</div>
+      <div class="bar-chart" id="chart-ventas">
+        <div class="bar" style="--bar-height: 120px;" data-tooltip="120k"></div>
+        <div class="bar" style="--bar-height: 90px;" data-tooltip="90k"></div>
+        <div class="bar" style="--bar-height: 140px;" data-tooltip="140k"></div>
+        <div class="bar" style="--bar-height: 110px;" data-tooltip="110k"></div>
+        <div class="bar" style="--bar-height: 160px;" data-tooltip="160k"></div>
+      </div>
+      <button class="btn-neon" onclick="alert('Propuesta para aumentar ventas!')">Ver Propuesta</button>
+    </div>
+
+    <!-- Tarjeta KPI 2 -->
+    <div class="glass-card">
+      <div class="section-title">Engagement Redes</div>
+      <div class="bar-chart" id="chart-engagement">
+        <div class="bar" style="--bar-height: 100px;" data-tooltip="100k"></div>
+        <div class="bar" style="--bar-height: 130px;" data-tooltip="130k"></div>
+        <div class="bar" style="--bar-height: 80px;" data-tooltip="80k"></div>
+        <div class="bar" style="--bar-height: 110px;" data-tooltip="110k"></div>
+        <div class="bar" style="--bar-height: 90px;" data-tooltip="90k"></div>
+      </div>
+      <button class="btn-neon" onclick="alert('Propuesta para mejorar engagement!')">Ver Propuesta</button>
+    </div>
+
+    <!-- Tarjeta KPI 3 -->
+    <div class="glass-card">
+      <div class="section-title">Sostenibilidad</div>
+      <p>Reducción de impacto ambiental en packaging.</p>
+      <p>+25% en materiales reciclados en 2025.</p>
+      <button class="btn-neon" onclick="alert('Ideas para sostenibilidad!')">Ver Propuesta</button>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2025 Arcor - Estrategia de Marketing UX basada en datos
+  </footer>
 
   <script>
-    // Embudo de conversión
-    const ctxFunnel = document.getElementById('funnelChart').getContext('2d');
-    new Chart(ctxFunnel, {
-      type: 'bar',
-      data: {
-        labels: ['Visitantes', 'Interacción', 'Leads', 'Ventas'],
-        datasets: [{
-          label: 'Conversiones',
-          data: [120000, 60000, 15000, 4000],
-          backgroundColor: ['#00eaff', '#00c4ff', '#0099ff', '#0077cc'],
-          borderRadius: 8
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        plugins: { legend: { display: false } },
-        scales: { x: { beginAtZero: true } }
-      }
-    });
+    // Aquí podrías agregar JS para animaciones más complejas,
+    // fetch de datos o interacción avanzada.
 
-    // Radar UX
-    const ctxRadar = document.getElementById('radarChart').getContext('2d');
-    new Chart(ctxRadar, {
-      type: 'radar',
-      data: {
-        labels: ['Usabilidad', 'Velocidad', 'Accesibilidad', 'SEO', 'Engagement'],
-        datasets: [
-          {
-            label: 'Arcor',
-            data: [75, 82, 78, 88, 67],
-            backgroundColor: 'rgba(0, 234, 255, 0.3)',
-            borderColor: '#00eaff',
-            pointBackgroundColor: '#00eaff'
-          },
-          {
-            label: 'Nestlé',
-            data: [80, 75, 82, 78, 80],
-            backgroundColor: 'rgba(255, 230, 0, 0.3)',
-            borderColor: '#ffe600',
-            pointBackgroundColor: '#ffe600'
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          r: {
-            beginAtZero: true,
-            max: 100,
-            ticks: { stepSize: 20 },
-            pointLabels: { color: '#eee' },
-            grid: { color: '#333' }
-          }
-        },
-        plugins: {
-          legend: { labels: { color: '#eee' } },
-          tooltip: { backgroundColor: '#1f1f1f', titleColor: '#00eaff', bodyColor: '#fff' }
-        }
-      }
-    });
-
-    // Mapa de calor con Leaflet
-    const map = L.map('heatmap').setView([-15, -60], 3);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    const heatData = [
-      [-34.6, -58.4, 0.9], // Buenos Aires
-      [-23.5, -46.6, 0.8], // São Paulo
-      [-12.0, -77.0, 0.6], // Lima
-      [-33.4, -70.6, 0.7], // Santiago
-      [4.6, -74.0, 0.5]    // Bogotá
-    ];
-
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/leaflet.heat/dist/leaflet-heat.js';
-    script.onload = () => {
-      L.heatLayer(heatData, { radius: 25, blur: 20 }).addTo(map);
-    };
-    document.head.appendChild(script);
+    // Ejemplo: animar barras (ya animadas con CSS), o un tooltip más avanzado
   </script>
+
 </body>
 </html>
