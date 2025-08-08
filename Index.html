@@ -163,8 +163,7 @@
   </footer>
 
   <script>
-    // Datos reales simulados, podés reemplazar por fetch a una API o archivo JSON
-
+    // Datos simulados para ejemplo
     const datosVentas = {
       labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
       datasets: [{
@@ -208,7 +207,7 @@
       }]
     };
 
-    // Opciones comunes
+    // Opciones comunes para barras
     const optionsBar = {
       scales: {
         y: {
@@ -295,7 +294,7 @@
 
     // Crear gráficos
 
-    // Ventas - gráfico de barras
+    // Ventas - barras verticales
     const ctxVentas = document.getElementById('ventasChart').getContext('2d');
     const ventasChart = new Chart(ctxVentas, {
       type: 'bar',
@@ -303,7 +302,7 @@
       options: optionsBar
     });
 
-    // Engagement - gráfico de pastel
+    // Engagement - pastel
     const ctxEngagement = document.getElementById('engagementChart').getContext('2d');
     const engagementChart = new Chart(ctxEngagement, {
       type: 'doughnut',
@@ -311,7 +310,7 @@
       options: optionsPie
     });
 
-    // Sostenibilidad - gráfico de barras horizontales
+    // Sostenibilidad - barras horizontales
     const ctxSostenibilidad = document.getElementById('sostenibilidadChart').getContext('2d');
     const sostenibilidadChart = new Chart(ctxSostenibilidad, {
       type: 'bar',
@@ -350,7 +349,7 @@
         },
       }
     });
-
   </script>
+
 </body>
 </html>
