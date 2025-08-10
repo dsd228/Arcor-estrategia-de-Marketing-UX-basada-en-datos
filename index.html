@@ -1,194 +1,158 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arcor · Estrategia de Marketing y UX basada en Datos</title>
+  <meta name="description" content="Análisis estratégico y UX de Arcor con visualizaciones, benchmarking y propuestas sostenibles" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
 
-html {
-  scroll-behavior: smooth;
-}
+  <header class="hero">
+    <div class="hero-content">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Logo_Arcor.svg" alt="Logo Arcor" class="logo" />
+      <h1>Arcor · Estrategia de Marketing y UX basada en Datos</h1>
+      <p class="subtitle">
+        Del algoritmo a la experiencia. <br />
+        From data to design, from insight to impact.
+      </p>
+      <p class="author">Autor / Author: David Sebastián Díaz</p>
+    </div>
+  </header>
 
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #fff;
-  color: #222;
-  line-height: 1.6;
-  font-size: 16px;
-}
+  <nav class="navbar">
+    <ul class="menu">
+      <li><a href="#introduccion">Introducción / Introduction</a></li>
+      <li><a href="#objetivos">Objetivos / Objectives</a></li>
+      <li><a href="#fuentes">Fuentes de datos / Data Sources</a></li>
+      <li><a href="#visualizaciones">Visualizaciones / Visualizations</a></li>
+      <li><a href="#hipotesis">Hipótesis & KPIs / Hypotheses & KPIs</a></li>
+      <li><a href="#sostenibilidad">Sostenibilidad / Sustainability</a></li>
+      <li><a href="#usabilidad">Usabilidad / Usability</a></li>
+      <li><a href="#corporativo">Datos corporativos / Corporate Data</a></li>
+      <li><a href="#conclusiones">Conclusiones / Conclusions</a></li>
+    </ul>
+  </nav>
 
-/* Hero Parallax */
-.hero {
-  position: relative;
-  height: 90vh;
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80');
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-  padding: 0 20px;
-  box-shadow: inset 0 0 60px rgba(0,0,0,0.7);
-}
+  <main>
+    <section id="introduccion" class="section">
+      <h2>Introducción / Introduction</h2>
+      <p>
+        Este proyecto explora el caso de <strong>Arcor</strong>, una de las marcas más icónicas de Latinoamérica, desde una perspectiva estratégica y técnica, combinando análisis de datos, experiencia de usuario (UX) y marketing digital.<br />
+        This project explores the case of <strong>Arcor</strong>, one of Latin America's most iconic brands, from a strategic and technical perspective, combining data analysis, user experience (UX), and digital marketing.
+      </p>
+      <p>
+        Incluye visualizaciones interactivas, benchmarking con Nestlé / Mondelez, análisis de consumo por país, propuestas ecológicas y auditoría UX del sitio web oficial.<br />
+        It includes interactive visualizations, benchmarking with Nestlé / Mondelez, country-level consumption analysis, ecological proposals, and UX audit of the official website.
+      </p>
+    </section>
 
-.hero-content {
-  max-width: 700px;
-}
+    <section id="objetivos" class="section">
+      <h2>Objetivos / Objectives</h2>
+      <ul>
+        <li>Analizar estrategias de marketing digital y tradicional.<br/>Evaluate digital and traditional marketing strategies.</li>
+        <li>Evaluar presencia online, segmentación y experiencia de usuario.<br/>Assess online presence, segmentation, and user experience.</li>
+        <li>Proponer mejoras basadas en datos, diseño y KPIs.<br/>Propose improvements based on data, design, and KPIs.</li>
+        <li>Comparar desempeño con competidores globales.<br/>Compare performance with global competitors.</li>
+        <li>Incorporar contexto de consumo y sostenibilidad.<br/>Integrate consumption context and sustainability.</li>
+      </ul>
+    </section>
 
-.logo {
-  width: 140px;
-  margin-bottom: 15px;
-  filter: drop-shadow(0 0 5px rgba(0,0,0,0.8));
-}
+    <section id="fuentes" class="section">
+      <h2>Fuentes de datos / Data Sources</h2>
+      <ul>
+        <li>Sitio oficial: <a href="https://www.arcor.com" target="_blank" rel="noopener noreferrer">www.arcor.com</a></li>
+        <li>Redes sociales: Instagram, Facebook, YouTube</li>
+        <li>Plataformas externas: SimilarWeb, SEMrush, Google Trends</li>
+        <li>Estudios de caso: Gutbit, VirtualMailer, Kantar</li>
+        <li>Métricas UX: Lighthouse, heurísticas de Nielsen</li>
+        <li>Reportes financieros Arcor 2024–2025</li>
+      </ul>
+    </section>
 
-.hero h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
-}
+    <section id="visualizaciones" class="section">
+      <h2>Visualizaciones / Visualizations</h2>
+      <div class="charts-container">
+        <canvas id="funnelChart"></canvas>
+        <canvas id="radarChart"></canvas>
+      </div>
+      <div class="heatmap-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Heatmap.png/640px-Heatmap.png" alt="Mapa de calor de consumo" />
+      </div>
+    </section>
 
-.subtitle {
-  font-size: 1.25rem;
-  font-weight: 400;
-  margin-bottom: 20px;
-  font-style: italic;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-}
+    <section id="hipotesis" class="section">
+      <h2>Hipótesis y KPIs / Hypotheses & KPIs</h2>
+      <div>
+        <strong>Hipótesis / Hypotheses:</strong>
+        <ul>
+          <li>El canal digital tiene mayor ROI en segmentos jóvenes.</li>
+          <li>El sitio web presenta oportunidades de mejora UX.</li>
+          <li>Nestlé tiene mayor engagement social, pero Arcor lidera en SEO.</li>
+          <li>El packaging ecológico mejora percepción de marca.</li>
+        </ul>
+      </div>
+      <div>
+        <strong>KPIs:</strong>
+        <ul>
+          <li>Engagement Rate (%)</li>
+          <li>Bounce Rate y duración promedio / Avg. session duration</li>
+          <li>SEO Ranking y tiempo de carga / SEO & load time</li>
+          <li>% de productos compostables / % compostable packaging</li>
+          <li>Variación de consumo por país / Consumption variation by country</li>
+        </ul>
+      </div>
+    </section>
 
-.author {
-  font-size: 1rem;
-  font-weight: 600;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-}
+    <section id="sostenibilidad" class="section">
+      <h2>Estrategias sostenibles / Sustainability Strategies</h2>
+      <ul>
+        <li>Packaging biodegradable (PLA, NatureFlex™, papel compostable)</li>
+        <li>Campañas verdes con QR educativo y gamificación</li>
+        <li>KPI: kg de plástico evitado, % de productos sostenibles</li>
+      </ul>
+    </section>
 
-/* Navbar */
-.navbar {
-  background-color: #004990;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+    <section id="usabilidad" class="section">
+      <h2>Usabilidad digital / Digital Usability</h2>
+      <ul>
+        <li>Auditoría UX con heurísticas de Nielsen</li>
+        <li>Métricas Lighthouse: <strong>LCP ≈ 2.9s · TTI ≈ 3.2s · Accesibilidad: 78/100</strong></li>
+        <li>Propuesta de app de fidelización con escaneo de productos</li>
+        <li>Mejora de navegación: búsqueda predictiva, breadcrumbs</li>
+      </ul>
+    </section>
 
-.menu {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  padding: 1rem 0;
-  flex-wrap: wrap;
-}
+    <section id="corporativo" class="section">
+      <h2>Datos corporativos / Corporate Data</h2>
+      <ul>
+        <li>Empleados: +21,000 en 40 plantas / Employees: 21,000+</li>
+        <li>Exportaciones: +120 países / Exports to 120+ countries</li>
+        <li>Ingresos 2024: $3.9 mil millones / Revenue 2024</li>
+        <li>Inversión: $410M en packaging sostenible / Investment in sustainability</li>
+        <li>Estrategia 2030: “Living Better” alineada con ODS ONU / 2030 strategy aligned with UN SDGs</li>
+      </ul>
+    </section>
 
-.menu li a {
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-}
+    <section id="conclusiones" class="section">
+      <h2>Conclusiones / Conclusions</h2>
+      <ul>
+        <li>Arcor tiene fuerte posicionamiento SEO, pero menor engagement social.</li>
+        <li>El sitio presenta oportunidades de mejora UX.</li>
+        <li>El canal digital muestra mayor ROI en segmentos jóvenes.</li>
+        <li>Nestlé destaca en fidelización y diseño UX.</li>
+        <li>El enfoque ecológico puede reposicionar la marca.</li>
+      </ul>
+    </section>
+  </main>
 
-.menu li a:hover,
-.menu li a:focus {
-  background-color: #f5a623;
-  color: #004990;
-  outline: none;
-}
+  <footer>
+    <p>© 2025 David Sebastián Díaz - Portfolio Técnico Interdisciplinario</p>
+  </footer>
 
-/* Secciones */
-.section {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 0 15px;
-}
-
-.section h2 {
-  font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  border-bottom: 3px solid #f5a623;
-  padding-bottom: 6px;
-  color: #004990;
-}
-
-.section p,
-.section ul,
-.section li {
-  font-weight: 400;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-.section ul {
-  list-style: disc inside;
-  padding-left: 0;
-}
-
-.section ul li {
-  margin-bottom: 0.7rem;
-}
-
-/* Contenedores gráficos */
-.charts-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.charts-container canvas {
-  background: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-  padding: 15px;
-  max-width: 420px;
-  width: 100%;
-  height: 300px !important;
-}
-
-/* Heatmap */
-.heatmap-container {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.heatmap-container img {
-  max-width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.15);
-}
-
-/* Footer */
-footer {
-  background-color: #004990;
-  color: white;
-  text-align: center;
-  padding: 1.8rem 1rem;
-  font-size: 0.9rem;
-  margin-top: 50px;
-  user-select: none;
-}
-
-/* Responsive */
-@media (max-width: 720px) {
-  .charts-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .menu {
-    gap: 1rem;
-    font-size: 0.9rem;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-}
+  <script src="scripts.js"></script>
+</body>
+</html>
