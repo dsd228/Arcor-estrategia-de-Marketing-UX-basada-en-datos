@@ -5,19 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Arcor · Estrategia de Marketing y UX basada en Datos</title>
   <meta name="description" content="Análisis estratégico y UX de Arcor con visualizaciones, benchmarking y propuestas sostenibles" />
-  <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" />
 </head>
 <body>
-  <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Logo_Arcor.svg" alt="Logo Arcor" class="logo" />
-    <h1>Arcor · Estrategia de Marketing y UX basada en Datos</h1>
-    <p class="author">Autor: David Sebastián Díaz</p>
-  </header>
 
+  <!-- Hero principal -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Logo_Arcor.svg" alt="Logo Arcor" class="hero-logo" />
+      <h1>Arcor · Estrategia de Marketing y UX basada en Datos</h1>
+      <p class="author">Autor: David Sebastián Díaz</p>
+    </div>
+  </section>
+
+  <!-- Menú sticky -->
   <nav>
     <ul class="menu">
       <li><a href="#introduccion">Introducción</a></li>
@@ -25,68 +30,51 @@
       <li><a href="#visualizaciones">Visualizaciones</a></li>
       <li><a href="#hipotesis">Hipótesis & KPIs</a></li>
       <li><a href="#sostenibilidad">Sostenibilidad</a></li>
-      <li><a href="#usabilidad">Usabilidad Digital</a></li>
-      <li><a href="#corporativo">Datos Corporativos</a></li>
+      <li><a href="#usabilidad">Usabilidad</a></li>
+      <li><a href="#corporativo">Datos</a></li>
       <li><a href="#conclusiones">Conclusiones</a></li>
     </ul>
   </nav>
 
   <main>
     <section id="introduccion">
-      <h2>Introducción / Introduction</h2>
+      <h2>Introducción</h2>
       <p>Este proyecto explora el caso de <strong>Arcor</strong>, una de las marcas más icónicas de Latinoamérica, desde una perspectiva estratégica y técnica, combinando análisis de datos, experiencia de usuario (UX) y marketing digital.</p>
-      <p>This project explores the case of <strong>Arcor</strong>, one of Latin America's most iconic brands, from a strategic and technical perspective, combining data analysis, user experience (UX), and digital marketing.</p>
       <p>Incluye visualizaciones interactivas, benchmarking con Nestlé / Mondelez, análisis de consumo por país, propuestas ecológicas y auditoría UX del sitio web oficial.</p>
-      <p>It includes interactive visualizations, benchmarking with Nestlé / Mondelez, country-level consumption analysis, ecological proposals, and UX audit of the official website.</p>
     </section>
 
     <section id="objetivos">
-      <h2>Objetivos / Objectives</h2>
-      <ul>
-        <li>Analizar estrategias de marketing digital y tradicional.</li>
-        <li>Evaluate digital and traditional marketing strategies.</li>
-        <li>Evaluar presencia online, segmentación y experiencia de usuario.</li>
-        <li>Assess online presence, segmentation, and user experience.</li>
-        <li>Proponer mejoras basadas en datos, diseño y KPIs.</li>
-        <li>Propose improvements based on data, design, and KPIs.</li>
-        <li>Comparar desempeño con competidores globales.</li>
-        <li>Compare performance with global competitors.</li>
-        <li>Incorporar contexto de consumo y sostenibilidad.</li>
-        <li>Integrate consumption context and sustainability.</li>
-      </ul>
+      <h2>Objetivos</h2>
+      <div class="cards">
+        <div class="card">Analizar estrategias de marketing digital y tradicional.</div>
+        <div class="card">Evaluar presencia online, segmentación y UX.</div>
+        <div class="card">Proponer mejoras basadas en datos y KPIs.</div>
+        <div class="card">Comparar desempeño con competidores globales.</div>
+        <div class="card">Incorporar contexto de consumo y sostenibilidad.</div>
+      </div>
     </section>
 
     <section id="visualizaciones">
-      <h2>Visualizaciones / Visualizations</h2>
+      <h2>Visualizaciones</h2>
       <div class="charts-container">
         <canvas id="funnelChart"></canvas>
         <canvas id="radarChart"></canvas>
       </div>
-      <div id="heatmap" style="height: 400px; margin-top: 20px;"></div>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Heatmap.png/640px-Heatmap.png" alt="Mapa de calor de consumo" />
+      <div id="heatmap"></div>
     </section>
 
     <section id="hipotesis">
-      <h2>Hipótesis y KPIs / Hypotheses & KPIs</h2>
-      <p><strong>Hipótesis / Hypotheses:</strong></p>
+      <h2>Hipótesis y KPIs</h2>
       <ul>
         <li>El canal digital tiene mayor ROI en segmentos jóvenes.</li>
-        <li>El sitio web presenta oportunidades de mejora UX.</li>
-        <li>Nestlé tiene mayor engagement social, pero Arcor lidera en SEO.</li>
-        <li>El packaging ecológico mejora percepción de marca.</li>
-      </ul>
-      <p><strong>KPIs:</strong></p>
-      <ul>
-        <li>Engagement Rate (%)</li>
-        <li>Bounce Rate y duración promedio / Avg. session duration</li>
-        <li>SEO Ranking y tiempo de carga / SEO & load time</li>
-        <li>% de productos compostables / % compostable packaging</li>
-        <li>Variación de consumo por país / Consumption variation by country</li>
+        <li>Oportunidades de mejora UX en el sitio web.</li>
+        <li>Nestlé con mayor engagement social, Arcor líder en SEO.</li>
+        <li>Packaging ecológico mejora percepción de marca.</li>
       </ul>
     </section>
 
     <section id="sostenibilidad">
-      <h2>Estratégias sostenibles / Sustainability Strategies</h2>
+      <h2>Estrategias Sostenibles</h2>
       <ul>
         <li>Packaging biodegradable (PLA, NatureFlex™, papel compostable)</li>
         <li>Campañas verdes con QR educativo y gamificación</li>
@@ -95,34 +83,34 @@
     </section>
 
     <section id="usabilidad">
-      <h2>Usabilidad digital / Digital Usability</h2>
+      <h2>Usabilidad Digital</h2>
       <ul>
         <li>Auditoría UX con heurísticas de Nielsen</li>
-        <li>Métricas Lighthouse: <strong>LCP ≈ 2.9s · TTI ≈ 3.2s · Accesibilidad: 78/100</strong></li>
-        <li>Propuesta de app de fidelización con escaneo de productos</li>
-        <li>Mejora de navegación: búsqueda predictiva, breadcrumbs</li>
+        <li>Lighthouse: LCP ≈ 2.9s · TTI ≈ 3.2s · Accesibilidad: 78/100</li>
+        <li>App de fidelización con escaneo de productos</li>
+        <li>Búsqueda predictiva, breadcrumbs</li>
       </ul>
     </section>
 
     <section id="corporativo">
-      <h2>Datos corporativos / Corporate Data</h2>
+      <h2>Datos Corporativos</h2>
       <ul>
-        <li>Empleados: +21,000 en 40 plantas / Employees: 21,000+</li>
-        <li>Exportaciones: +120 países / Exports to 120+ countries</li>
-        <li>Ingresos 2024: $3.9 mil millones / Revenue 2024</li>
-        <li>Inversión: $410M en packaging sostenible / Investment in sustainability</li>
-        <li>Estrategia 2030: “Living Better” alineada con ODS ONU / 2030 strategy aligned with UN SDGs</li>
+        <li>+21,000 empleados en 40 plantas</li>
+        <li>Exportaciones a 120+ países</li>
+        <li>Ingresos 2024: $3.9 mil millones</li>
+        <li>Inversión: $410M en packaging sostenible</li>
+        <li>Estrategia 2030 alineada con ODS ONU</li>
       </ul>
     </section>
 
     <section id="conclusiones">
-      <h2>Conclusiones / Conclusions</h2>
+      <h2>Conclusiones</h2>
       <ul>
-        <li>Arcor tiene fuerte posicionamiento SEO, pero menor engagement social.</li>
-        <li>El sitio presenta oportunidades de mejora UX.</li>
-        <li>El canal digital muestra mayor ROI en segmentos jóvenes.</li>
-        <li>Nestlé destaca en fidelización y diseño UX.</li>
-        <li>El enfoque ecológico puede reposicionar la marca.</li>
+        <li>Fuerte posicionamiento SEO, menor engagement social.</li>
+        <li>Oportunidades de mejora UX.</li>
+        <li>Mayor ROI digital en segmentos jóvenes.</li>
+        <li>Nestlé destaca en fidelización y UX.</li>
+        <li>Enfoque ecológico como reposicionamiento.</li>
       </ul>
     </section>
   </main>
