@@ -1,187 +1,194 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Arcor · Estrategia de Marketing y UX basada en Datos</title>
-  <meta name="description" content="Dashboard y portafolio técnico: visualizaciones en tiempo real, parallax hero y reportes." />
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+html {
+  scroll-behavior: smooth;
+}
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+  color: #222;
+  line-height: 1.6;
+  font-size: 16px;
+}
 
-  <!-- Chart.js, Leaflet, ScrollReveal -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/scrollreveal"></script>
-</head>
-<body>
+/* Hero Parallax */
+.hero {
+  position: relative;
+  height: 90vh;
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 0 20px;
+  box-shadow: inset 0 0 60px rgba(0,0,0,0.7);
+}
 
-  <!-- HERO (Parallax) -->
-  <header class="hero" id="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-inner">
-      <img class="hero-logo" src="https://upload.wikimedia.org/wikipedia/commons/4/43/Logo_Arcor.svg" alt="Logo Arcor" />
-      <h1>Arcor · Estrategia de Marketing y UX basada en Datos</h1>
-      <p class="hero-sub">Del algoritmo a la experiencia · From data to design, from insight to impact</p>
-      <div class="meta">
-        <span>Autor: <strong>David Sebastián Díaz</strong></span>
-        <span id="last-updated">Última actualización: —</span>
-      </div>
-    </div>
-  </header>
+.hero-content {
+  max-width: 700px;
+}
 
-  <!-- NAV -->
-  <nav class="navbar">
-    <div class="nav-left">
-      <div class="brand">Arcor</div>
-    </div>
+.logo {
+  width: 140px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.8));
+}
 
-    <div class="nav-right">
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+}
 
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#introduccion">Introducción</a></li>
-        <li><a href="#objetivos">Objetivos</a></li>
-        <li><a href="#visualizaciones">Visualizaciones</a></li>
-        <li><a href="#hipotesis">Hipótesis & KPIs</a></li>
-        <li><a href="#sostenibilidad">Sostenibilidad</a></li>
-        <li><a href="#usabilidad">Usabilidad</a></li>
-        <li><a href="#corporativo">Datos</a></li>
-        <li><a href="#conclusiones">Conclusiones</a></li>
-      </ul>
-    </div>
-  </nav>
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  font-style: italic;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
 
-  <!-- MAIN -->
-  <main>
-    <section id="introduccion" class="panel reveal">
-      <h2>Introducción</h2>
-      <p>Este proyecto explora el caso de <strong>Arcor</strong>, una de las marcas más icónicas de Latinoamérica, desde una perspectiva estratégica y técnica, combinando análisis de datos, experiencia de usuario (UX) y marketing digital.</p>
-      <p>Incluye visualizaciones interactivas, benchmarking con Nestlé / Mondelez, análisis de consumo por país, propuestas ecológicas y auditoría UX del sitio web oficial.</p>
-    </section>
+.author {
+  font-size: 1rem;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
 
-    <section id="objetivos" class="panel reveal">
-      <h2>Objetivos</h2>
-      <ul class="objectives">
-        <li>Analizar estrategias de marketing digital y tradicional.</li>
-        <li>Evaluar presencia online, segmentación y UX.</li>
-        <li>Proponer mejoras basadas en datos y KPIs.</li>
-        <li>Comparar desempeño con competidores globales.</li>
-        <li>Incorporar contexto de consumo y sostenibilidad.</li>
-      </ul>
-    </section>
+/* Navbar */
+.navbar {
+  background-color: #004990;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-    <section id="visualizaciones" class="panel reveal">
-      <h2>Visualizaciones (actualización en tiempo real)</h2>
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
 
-      <div class="grid">
-        <div class="card">
-          <h3>Embudo de conversión</h3>
-          <canvas id="funnelChart" height="200"></canvas>
-        </div>
+.menu li a {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
 
-        <div class="card">
-          <h3>Radar UX — Comparativa</h3>
-          <canvas id="radarChart" height="200"></canvas>
-        </div>
+.menu li a:hover,
+.menu li a:focus {
+  background-color: #f5a623;
+  color: #004990;
+  outline: none;
+}
 
-        <div class="card full">
-          <h3>Mapa de presencia / Consumo (heatmap)</h3>
-          <div id="heatmap" style="height:360px;"></div>
-        </div>
+/* Secciones */
+.section {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 15px;
+}
 
-        <div class="card">
-          <h3>Engagement vs SEO (serie)</h3>
-          <canvas id="lineChart" height="200"></canvas>
-        </div>
+.section h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #f5a623;
+  padding-bottom: 6px;
+  color: #004990;
+}
 
-        <div class="card">
-          <h3>KPI Packaging Ecológico</h3>
-          <div id="eco-kpis">
-            <div class="kpi"><strong id="kg-plastic">—</strong><span>kg plástico evitado</span></div>
-            <div class="kpi"><strong id="pct-sustainable">—</strong><span>% productos sostenibles</span></div>
-            <div class="kpi"><strong id="compostable">—</strong><span>% compostable</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
+.section p,
+.section ul,
+.section li {
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
 
-    <section id="hipotesis" class="panel reveal">
-      <h2>Hipótesis & KPIs</h2>
-      <ul>
-        <li>El canal digital tiene mayor ROI en segmentos jóvenes.</li>
-        <li>El sitio web presenta oportunidades de mejora UX.</li>
-        <li>Nestlé tiene mayor engagement social, Arcor lidera en SEO.</li>
-        <li>El packaging ecológico mejora percepción de marca.</li>
-      </ul>
+.section ul {
+  list-style: disc inside;
+  padding-left: 0;
+}
 
-      <h3>KPIs clave</h3>
-      <ul class="kpi-list">
-        <li>Engagement Rate (%)</li>
-        <li>Bounce Rate / Avg session duration</li>
-        <li>SEO Ranking / Tiempo de carga</li>
-        <li>% productos compostables</li>
-        <li>Variación de consumo por país</li>
-      </ul>
-    </section>
+.section ul li {
+  margin-bottom: 0.7rem;
+}
 
-    <section id="sostenibilidad" class="panel reveal">
-      <h2>Estrategias sostenibles</h2>
-      <ul>
-        <li>Packaging biodegradable (PLA, NatureFlex™, papel compostable)</li>
-        <li>Campañas verdes con QR educativo y gamificación</li>
-        <li>KPI: kg de plástico evitado, % de productos sostenibles</li>
-      </ul>
-    </section>
+/* Contenedores gráficos */
+.charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
-    <section id="usabilidad" class="panel reveal">
-      <h2>Usabilidad digital</h2>
-      <ul>
-        <li>Auditoría UX con heurísticas de Nielsen</li>
-        <li>Métricas Lighthouse: <strong>LCP ≈ 2.9s · TTI ≈ 3.2s · Accesibilidad: 78/100</strong></li>
-        <li>Propuesta de app de fidelización con escaneo de productos</li>
-        <li>Mejora de navegación: búsqueda predictiva, breadcrumbs</li>
-      </ul>
-    </section>
+.charts-container canvas {
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+  padding: 15px;
+  max-width: 420px;
+  width: 100%;
+  height: 300px !important;
+}
 
-    <section id="corporativo" class="panel reveal">
-      <h2>Datos corporativos</h2>
-      <ul>
-        <li>Empleados: +21,000 en 40 plantas</li>
-        <li>Exportaciones: +120 países</li>
-        <li>Ingresos 2024: $3.9 mil millones</li>
-        <li>Inversión: $410M en packaging sostenible</li>
-        <li>Estrategia 2030: “Living Better” alineada con ODS ONU</li>
-      </ul>
-    </section>
+/* Heatmap */
+.heatmap-container {
+  text-align: center;
+  margin-top: 15px;
+}
 
-    <section id="conclusiones" class="panel reveal">
-      <h2>Conclusiones</h2>
-      <ul>
-        <li>Arcor tiene fuerte posicionamiento SEO, pero menor engagement social.</li>
-        <li>El sitio presenta oportunidades de mejora UX.</li>
-        <li>El canal digital muestra mayor ROI en segmentos jóvenes.</li>
-        <li>Nestlé destaca en fidelización y diseño UX.</li>
-        <li>El enfoque ecológico puede reposicionar la marca.</li>
-      </ul>
-    </section>
-  </main>
+.heatmap-container img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.15);
+}
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <p>© 2025 David Sebastián Díaz · Portfolio Técnico Interdisciplinario</p>
-      <p class="small">Datos: fuentes públicas, SimilarWeb, SEMrush, Google Trends. Visualizaciones actualizadas automáticamente (simulación).</p>
-    </div>
-  </footer>
+/* Footer */
+footer {
+  background-color: #004990;
+  color: white;
+  text-align: center;
+  padding: 1.8rem 1rem;
+  font-size: 0.9rem;
+  margin-top: 50px;
+  user-select: none;
+}
 
-  <!-- App Script -->
-  <script src="scripts.js"></script>
-</body>
-</html>
+/* Responsive */
+@media (max-width: 720px) {
+  .charts-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+}
