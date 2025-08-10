@@ -40,3 +40,12 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 L.marker([-34.6, -58.38]).addTo(map).bindPopup("Buenos Aires - Sede Arcor");
+
+// ScrollReveal animaciones
+ScrollReveal().reveal('.reveal', {
+  duration: 800,
+  distance: '50px',
+  easing: 'ease-in-out',
+  origin: 'bottom',
+  interval: 100
+});
