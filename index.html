@@ -10,12 +10,14 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" />
+  <!-- ScrollReveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
 
   <!-- Hero principal -->
   <section class="hero">
-    <div class="hero-content">
+    <div class="hero-content reveal">
       <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Logo_Arcor.svg" alt="Logo Arcor" class="hero-logo" />
       <h1>Arcor · Estrategia de Marketing y UX basada en Datos</h1>
       <p class="author">Autor: David Sebastián Díaz</p>
@@ -23,7 +25,7 @@
   </section>
 
   <!-- Menú sticky -->
-  <nav>
+  <nav class="reveal">
     <ul class="menu">
       <li><a href="#introduccion">Introducción</a></li>
       <li><a href="#objetivos">Objetivos</a></li>
@@ -37,13 +39,13 @@
   </nav>
 
   <main>
-    <section id="introduccion">
+    <section id="introduccion" class="reveal">
       <h2>Introducción</h2>
       <p>Este proyecto explora el caso de <strong>Arcor</strong>, una de las marcas más icónicas de Latinoamérica, desde una perspectiva estratégica y técnica, combinando análisis de datos, experiencia de usuario (UX) y marketing digital.</p>
       <p>Incluye visualizaciones interactivas, benchmarking con Nestlé / Mondelez, análisis de consumo por país, propuestas ecológicas y auditoría UX del sitio web oficial.</p>
     </section>
 
-    <section id="objetivos">
+    <section id="objetivos" class="reveal">
       <h2>Objetivos</h2>
       <div class="cards">
         <div class="card">Analizar estrategias de marketing digital y tradicional.</div>
@@ -54,7 +56,7 @@
       </div>
     </section>
 
-    <section id="visualizaciones">
+    <section id="visualizaciones" class="reveal">
       <h2>Visualizaciones</h2>
       <div class="charts-container">
         <canvas id="funnelChart"></canvas>
@@ -63,7 +65,7 @@
       <div id="heatmap"></div>
     </section>
 
-    <section id="hipotesis">
+    <section id="hipotesis" class="reveal">
       <h2>Hipótesis y KPIs</h2>
       <ul>
         <li>El canal digital tiene mayor ROI en segmentos jóvenes.</li>
@@ -73,7 +75,7 @@
       </ul>
     </section>
 
-    <section id="sostenibilidad">
+    <section id="sostenibilidad" class="reveal">
       <h2>Estrategias Sostenibles</h2>
       <ul>
         <li>Packaging biodegradable (PLA, NatureFlex™, papel compostable)</li>
@@ -82,7 +84,7 @@
       </ul>
     </section>
 
-    <section id="usabilidad">
+    <section id="usabilidad" class="reveal">
       <h2>Usabilidad Digital</h2>
       <ul>
         <li>Auditoría UX con heurísticas de Nielsen</li>
@@ -92,7 +94,7 @@
       </ul>
     </section>
 
-    <section id="corporativo">
+    <section id="corporativo" class="reveal">
       <h2>Datos Corporativos</h2>
       <ul>
         <li>+21,000 empleados en 40 plantas</li>
@@ -103,7 +105,7 @@
       </ul>
     </section>
 
-    <section id="conclusiones">
+    <section id="conclusiones" class="reveal">
       <h2>Conclusiones</h2>
       <ul>
         <li>Fuerte posicionamiento SEO, menor engagement social.</li>
@@ -115,7 +117,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="reveal">
     <p>© 2025 David Sebastián Díaz - Portfolio Técnico Interdisciplinario</p>
   </footer>
 
