@@ -1,80 +1,187 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Arcor · Estrategia de Marketing y UX basada en Datos</title>
-  <meta name="description" content="Análisis estratégico y UX de Arcor con visualizaciones, benchmarking y propuestas sostenibles" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="description" content="Dashboard y portafolio técnico: visualizaciones en tiempo real, parallax hero y reportes." />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Chart.js, Leaflet, ScrollReveal -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" />
   <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
 
-  <!-- Hero principal -->
-  <section class="hero">
-    <div class="hero-content reveal">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Logo_Arcor.svg" alt="Logo Arcor" class="hero-logo" />
+  <!-- HERO (Parallax) -->
+  <header class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <img class="hero-logo" src="https://upload.wikimedia.org/wikipedia/commons/4/43/Logo_Arcor.svg" alt="Logo Arcor" />
       <h1>Arcor · Estrategia de Marketing y UX basada en Datos</h1>
-      <p class="author">Autor: David Sebastián Díaz</p>
+      <p class="hero-sub">Del algoritmo a la experiencia · From data to design, from insight to impact</p>
+      <div class="meta">
+        <span>Autor: <strong>David Sebastián Díaz</strong></span>
+        <span id="last-updated">Última actualización: —</span>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <!-- Menú hamburguesa -->
-  <nav class="navbar reveal">
-    <div class="logo">Arcor</div>
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="brand">Arcor</div>
     </div>
-    <ul class="menu" id="menu">
-      <li><a href="#introduccion">Introducción</a></li>
-      <li><a href="#objetivos">Objetivos</a></li>
-      <li><a href="#visualizaciones">Visualizaciones</a></li>
-      <li><a href="#hipotesis">Hipótesis & KPIs</a></li>
-      <li><a href="#sostenibilidad">Sostenibilidad</a></li>
-      <li><a href="#usabilidad">Usabilidad</a></li>
-      <li><a href="#corporativo">Datos</a></li>
-      <li><a href="#conclusiones">Conclusiones</a></li>
-    </ul>
+
+    <div class="nav-right">
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#introduccion">Introducción</a></li>
+        <li><a href="#objetivos">Objetivos</a></li>
+        <li><a href="#visualizaciones">Visualizaciones</a></li>
+        <li><a href="#hipotesis">Hipótesis & KPIs</a></li>
+        <li><a href="#sostenibilidad">Sostenibilidad</a></li>
+        <li><a href="#usabilidad">Usabilidad</a></li>
+        <li><a href="#corporativo">Datos</a></li>
+        <li><a href="#conclusiones">Conclusiones</a></li>
+      </ul>
+    </div>
   </nav>
 
+  <!-- MAIN -->
   <main>
-    <!-- Introducción -->
-    <section id="introduccion" class="reveal">
+    <section id="introduccion" class="panel reveal">
       <h2>Introducción</h2>
-      <p>Este proyecto explora el caso de <strong>Arcor</strong>, una de las marcas más icónicas de Latinoamérica...</p>
+      <p>Este proyecto explora el caso de <strong>Arcor</strong>, una de las marcas más icónicas de Latinoamérica, desde una perspectiva estratégica y técnica, combinando análisis de datos, experiencia de usuario (UX) y marketing digital.</p>
+      <p>Incluye visualizaciones interactivas, benchmarking con Nestlé / Mondelez, análisis de consumo por país, propuestas ecológicas y auditoría UX del sitio web oficial.</p>
     </section>
 
-    <!-- Objetivos -->
-    <section id="objetivos" class="reveal">
+    <section id="objetivos" class="panel reveal">
       <h2>Objetivos</h2>
-      <div class="cards">
-        <div class="card">Analizar estrategias de marketing digital y tradicional.</div>
-        <div class="card">Evaluar presencia online, segmentación y UX.</div>
-        <div class="card">Proponer mejoras basadas en datos y KPIs.</div>
-        <div class="card">Comparar desempeño con competidores globales.</div>
-        <div class="card">Incorporar contexto de consumo y sostenibilidad.</div>
+      <ul class="objectives">
+        <li>Analizar estrategias de marketing digital y tradicional.</li>
+        <li>Evaluar presencia online, segmentación y UX.</li>
+        <li>Proponer mejoras basadas en datos y KPIs.</li>
+        <li>Comparar desempeño con competidores globales.</li>
+        <li>Incorporar contexto de consumo y sostenibilidad.</li>
+      </ul>
+    </section>
+
+    <section id="visualizaciones" class="panel reveal">
+      <h2>Visualizaciones (actualización en tiempo real)</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Embudo de conversión</h3>
+          <canvas id="funnelChart" height="200"></canvas>
+        </div>
+
+        <div class="card">
+          <h3>Radar UX — Comparativa</h3>
+          <canvas id="radarChart" height="200"></canvas>
+        </div>
+
+        <div class="card full">
+          <h3>Mapa de presencia / Consumo (heatmap)</h3>
+          <div id="heatmap" style="height:360px;"></div>
+        </div>
+
+        <div class="card">
+          <h3>Engagement vs SEO (serie)</h3>
+          <canvas id="lineChart" height="200"></canvas>
+        </div>
+
+        <div class="card">
+          <h3>KPI Packaging Ecológico</h3>
+          <div id="eco-kpis">
+            <div class="kpi"><strong id="kg-plastic">—</strong><span>kg plástico evitado</span></div>
+            <div class="kpi"><strong id="pct-sustainable">—</strong><span>% productos sostenibles</span></div>
+            <div class="kpi"><strong id="compostable">—</strong><span>% compostable</span></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Visualizaciones -->
-    <section id="visualizaciones" class="reveal">
-      <h2>Visualizaciones</h2>
-      <div class="charts-container">
-        <canvas id="funnelChart"></canvas>
-        <canvas id="radarChart"></canvas>
-      </div>
-      <div id="heatmap"></div>
+    <section id="hipotesis" class="panel reveal">
+      <h2>Hipótesis & KPIs</h2>
+      <ul>
+        <li>El canal digital tiene mayor ROI en segmentos jóvenes.</li>
+        <li>El sitio web presenta oportunidades de mejora UX.</li>
+        <li>Nestlé tiene mayor engagement social, Arcor lidera en SEO.</li>
+        <li>El packaging ecológico mejora percepción de marca.</li>
+      </ul>
+
+      <h3>KPIs clave</h3>
+      <ul class="kpi-list">
+        <li>Engagement Rate (%)</li>
+        <li>Bounce Rate / Avg session duration</li>
+        <li>SEO Ranking / Tiempo de carga</li>
+        <li>% productos compostables</li>
+        <li>Variación de consumo por país</li>
+      </ul>
+    </section>
+
+    <section id="sostenibilidad" class="panel reveal">
+      <h2>Estrategias sostenibles</h2>
+      <ul>
+        <li>Packaging biodegradable (PLA, NatureFlex™, papel compostable)</li>
+        <li>Campañas verdes con QR educativo y gamificación</li>
+        <li>KPI: kg de plástico evitado, % de productos sostenibles</li>
+      </ul>
+    </section>
+
+    <section id="usabilidad" class="panel reveal">
+      <h2>Usabilidad digital</h2>
+      <ul>
+        <li>Auditoría UX con heurísticas de Nielsen</li>
+        <li>Métricas Lighthouse: <strong>LCP ≈ 2.9s · TTI ≈ 3.2s · Accesibilidad: 78/100</strong></li>
+        <li>Propuesta de app de fidelización con escaneo de productos</li>
+        <li>Mejora de navegación: búsqueda predictiva, breadcrumbs</li>
+      </ul>
+    </section>
+
+    <section id="corporativo" class="panel reveal">
+      <h2>Datos corporativos</h2>
+      <ul>
+        <li>Empleados: +21,000 en 40 plantas</li>
+        <li>Exportaciones: +120 países</li>
+        <li>Ingresos 2024: $3.9 mil millones</li>
+        <li>Inversión: $410M en packaging sostenible</li>
+        <li>Estrategia 2030: “Living Better” alineada con ODS ONU</li>
+      </ul>
+    </section>
+
+    <section id="conclusiones" class="panel reveal">
+      <h2>Conclusiones</h2>
+      <ul>
+        <li>Arcor tiene fuerte posicionamiento SEO, pero menor engagement social.</li>
+        <li>El sitio presenta oportunidades de mejora UX.</li>
+        <li>El canal digital muestra mayor ROI en segmentos jóvenes.</li>
+        <li>Nestlé destaca en fidelización y diseño UX.</li>
+        <li>El enfoque ecológico puede reposicionar la marca.</li>
+      </ul>
     </section>
   </main>
 
-  <footer class="reveal">
-    <p>© 2025 David Sebastián Díaz - Portfolio Técnico Interdisciplinario</p>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p>© 2025 David Sebastián Díaz · Portfolio Técnico Interdisciplinario</p>
+      <p class="small">Datos: fuentes públicas, SimilarWeb, SEMrush, Google Trends. Visualizaciones actualizadas automáticamente (simulación).</p>
+    </div>
   </footer>
 
+  <!-- App Script -->
   <script src="scripts.js"></script>
 </body>
 </html>
