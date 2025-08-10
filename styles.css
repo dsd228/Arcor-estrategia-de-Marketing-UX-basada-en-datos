@@ -5,12 +5,19 @@ body {
   color: #333;
 }
 
-/* Hero */
+/* Hero con degradado animado */
 .hero {
-  background: linear-gradient(90deg, #004C97, #0074D9);
+  background: linear-gradient(-45deg, #004C97, #0074D9, #FDB913, #FFB347);
+  background-size: 400% 400%;
+  animation: gradient 12s ease infinite;
   color: #fff;
   text-align: center;
   padding: 3rem 1rem;
+}
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 .hero-logo {
   max-height: 70px;
@@ -79,6 +86,11 @@ h2 {
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   border-left: 5px solid #FDB913;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 /* Gráficos */
